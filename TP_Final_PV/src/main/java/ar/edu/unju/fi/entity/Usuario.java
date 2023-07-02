@@ -2,14 +2,16 @@ package ar.edu.unju.fi.entity;
 
 import java.time.LocalDate;
 
+
 public class Usuario {
+	private Long id;
 	private String nombre;
 	private String apellido;
 	private String email;
 	private LocalDate fechaNacimiento;
 	private Long telefono;
 	private String sexo;
-	private Double estatura;
+	private Float estatura;
 	
 	public Usuario() {
 		super();
@@ -17,7 +19,7 @@ public class Usuario {
 	}
 
 	public Usuario(String nombre, String apellido, String email, LocalDate fechaNacimiento, Long telefono, String sexo,
-			Double estatura) {
+			Float estatura) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -32,6 +34,14 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", fechaNacimiento="
 				+ fechaNacimiento + ", telefono=" + telefono + ", sexo=" + sexo + ", estatura=" + estatura + "]";
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -82,11 +92,11 @@ public class Usuario {
 		this.sexo = sexo;
 	}
 
-	public Double getEstatura() {
+	public Float getEstatura() {
 		return estatura;
 	}
 
-	public void setEstatura(Double estatura) {
+	public void setEstatura(Float estatura) {
 		this.estatura = estatura;
 	}
 	
