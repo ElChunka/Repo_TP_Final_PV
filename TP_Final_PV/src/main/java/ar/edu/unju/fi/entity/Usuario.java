@@ -41,6 +41,9 @@ public class Usuario {
 	@Column(name="user_estatura")
 	private Float estatura;
 	
+	@Column(name="user_estado")
+	boolean estado;
+	
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub

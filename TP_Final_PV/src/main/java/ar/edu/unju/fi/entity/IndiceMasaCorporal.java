@@ -3,13 +3,25 @@ package ar.edu.unju.fi.entity;
 import java.util.Date;
 
 import org.aspectj.weaver.NewConstructorTypeMunger;
+import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Component
+@Entity
+@Table(name="IMC")
 public class IndiceMasaCorporal {
 
-	
+@Id	
 	private Long id;
+@Column
 	private Date fecha_imc;
+@Column
 	private String usuario;
+@Column
 	private String estado;
 
 	public IndiceMasaCorporal() {

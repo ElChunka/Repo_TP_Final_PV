@@ -5,11 +5,12 @@ import java.util.List;
 //import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
 import ar.edu.unju.fi.entity.Usuario;
 import ar.edu.unju.fi.repository.IIMCRepository;
-
+@Service
 public class IMCServiceImp {
 
 	@Autowired
