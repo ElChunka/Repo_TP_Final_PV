@@ -2,15 +2,43 @@ package ar.edu.unju.fi.entity;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Component
+@Entity
+@Table(name="usuarios")
 public class Usuario {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private Long id;
+	
+	@Column(name="user_nombre")
 	private String nombre;
+	
+	@Column(name="user_apellido")
 	private String apellido;
+	
+	@Column(name="user_email")
 	private String email;
+	
+	@Column(name="user_fecha_de_nacimiento")
 	private LocalDate fechaNacimiento;
+	
+	@Column(name="user_telefono")
 	private Long telefono;
+	
+	@Column(name="user_sexo")
 	private String sexo;
+	
+	@Column(name="user_estatura")
 	private Float estatura;
 	
 	public Usuario() {
