@@ -10,6 +10,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Positive;
 
 @Component
 @Entity
@@ -20,36 +24,44 @@ public class Usuario {
 	@Column(name="user_id")
 	private Long id;
 	
+	@NotBlank(message="No puede estar vacio")
 	@Column(name="user_nombre")
 	private String nombre;
 	
+	@NotBlank(message="No puede estar vacio")
 	@Column(name="user_apellido")
 	private String apellido;
 	
+	@NotBlank(message="no dejar en blanco")
+	@Email(message="ingrese un email valido")
 	@Column(name="user_email")
 	private String email;
 	
+	@Past(message="la fecha debe ser anterior a la actual")
 	@Column(name="user_fecha_de_nacimiento")
 	private LocalDate fechaNacimiento;
 	
+	@NotBlank(message="no dejar vacio")
 	@Column(name="user_telefono")
-	private Long telefono;
+	private String telefono;
 	
+	@NotBlank(message="no dejar en blanco")
 	@Column(name="user_sexo")
 	private String sexo;
 	
+	@Positive(message="la estatura no puede ser negativa")
 	@Column(name="user_estatura")
 	private Float estatura;
 	
 	@Column(name="user_estado")
-	boolean estado;
+	boolean estado=true;
 	
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(String nombre, String apellido, String email, LocalDate fechaNacimiento, Long telefono, String sexo,
+	public Usuario(String nombre, String apellido, String email, LocalDate fechaNacimiento, String telefono, String sexo,
 			Float estatura) {
 		super();
 		this.nombre = nombre;
@@ -107,11 +119,11 @@ public class Usuario {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public Long getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(Long telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
