@@ -12,6 +12,11 @@ public class IndiceMasaCorporal {
 	private String usuario;
 	private String estado;
 
+	public IndiceMasaCorporal() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public IndiceMasaCorporal(Long id, Date fecha_imc, String usuario, String estado) {
 		super();
 		this.id = id;
