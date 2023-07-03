@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.entity;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,9 @@ public class Usuario {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private Long id;
+	
+	@Column(name="user_codigo")
+	private int codigo;
 	
 	@NotBlank(message="No puede estar vacio")
 	@Column(name="user_nombre")
@@ -53,8 +57,8 @@ public class Usuario {
 	@Column(name="user_estatura")
 	private Float estatura;
 	
-	@Column(name="user_estado")
-	boolean estado=true;
+	@Column(name="user_admin")
+	boolean admin;
 	
 	public Usuario() {
 		super();
@@ -62,7 +66,7 @@ public class Usuario {
 	}
 
 	public Usuario(String nombre, String apellido, String email, LocalDate fechaNacimiento, String telefono, String sexo,
-			Float estatura) {
+			Float estatura, boolean admin) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -71,6 +75,7 @@ public class Usuario {
 		this.telefono = telefono;
 		this.sexo = sexo;
 		this.estatura = estatura;
+		this.admin = admin;
 	}
 
 	@Override
@@ -142,5 +147,23 @@ public class Usuario {
 	public void setEstatura(Float estatura) {
 		this.estatura = estatura;
 	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+	
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	
 	
 }
