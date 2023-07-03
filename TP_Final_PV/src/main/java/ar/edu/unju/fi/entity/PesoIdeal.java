@@ -1,15 +1,17 @@
 package ar.edu.unju.fi.entity;
 
-import jakarta.persistence.Entity;
+import org.springframework.stereotype.Component;
 
-@Entity
+
+
+//@Component
 public class PesoIdeal {
 
 	private int edad;
 	private float peso;
 	private float estatura;
 	
-	public PesoIdeal(long id, int edad, float peso, float estatura) {
+	public PesoIdeal(int edad, float peso, float estatura) {
 		super();
 		this.edad = edad;
 		this.peso = peso;
