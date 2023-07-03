@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
 import ar.edu.unju.fi.repository.IIMCRepository;
 
+@Service("imcServiceImp")
 public class IMCServiceImp {
 
 	@Autowired
@@ -20,8 +22,8 @@ public class IMCServiceImp {
        IndiceMasaCorporal imc_usuario = new IndiceMasaCorporal();
        
         // Calcular el Indice de Masa Corporal
-        double imc = peso / (usuario.getAltura() * usuario.getAltura());// Falta crear usuario para calcular el imc el peso con la altura
-        // Display a message based on the BMI result.
+        double imc = peso / (usuario.getEstatura() * usuario.getEstatura());
+        // Muestra un mensaje basado en el resultado del IMC.
         if (imc < 18.5) {
         	imc_usuario.setEstado("Su IMC es " + imc + " - Está por debajo de su peso ideal");
         } else if (imc >= 18.5 && imc <= 25) {
@@ -30,12 +32,12 @@ public class IMCServiceImp {
         	imc_usuario.setEstado("Su IMC es " + imc + " - Tiene sobrepeso.");
         }
         imc_usuario.setFehca_imc(new Date());
-        imc_usuario.setUsuario(usuario.getNombre);// Falta crear usuario para asignar nombre
+        imc_usuario.setUsuario(usuario.getNombre);
         imcRepository.save(imc_usuario);
     }
 	
 	public List<IndiceMasaCorporal> AllByUsuario() {
-		return imcRepository.findByusuario(usuarioLogeado);// Falta usuario para devolver los imc
+		return imcRepository.findByUsuarioId(Long id_usuario);// Falta usuario para devolver los imcusuarioLogeado
 	}
 	
 	

@@ -3,13 +3,36 @@ package ar.edu.unju.fi.entity;
 import java.util.Date;
 
 import org.aspectj.weaver.NewConstructorTypeMunger;
+import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+
+@Component
+@Entity
+@Table(name="indiceMasaCorporal")
 public class IndiceMasaCorporal {
 
-	
+	@Id
+	@Column(name = "imc_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	//@NotBlank(message="Debe de haber una fecha de registro")
+	@Column(name = "fecha_imc")
 	private Date fecha_imc;
+	
+	//@NotBlank(message="No puede estar vacio")
+	@Column(name = "usuario_imc")
 	private String usuario;
+	
+	//@NotBlank(message="Tiene que haber un estado")
+	@Column(name = "estado_imc")
 	private String estado;
 
 	public IndiceMasaCorporal(Long id, Date fecha_imc, String usuario, String estado) {
@@ -58,11 +81,11 @@ public class IndiceMasaCorporal {
 				+ estado + "]";
 	}
 	
-	/*public IndiceMasaCorporal() {
+	public IndiceMasaCorporal() {
 		super();
-		//this.usuario = usuarioLogeado;
-		this.fecha_imc = new Date();
+		/*/this.usuario = usuarioLogeado;
+		this.fecha_imc = new Date();*/
 		
-	}*/
+	}
 	
 }
