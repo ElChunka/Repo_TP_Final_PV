@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" >
+    <title>NutriVida</title>
+</head>
+<body>
+    
+	<div th:replace="~{/layouts/header :: header}"></div>
+
+
+
+
+	<section>
+        <div class="container">
+            <h1 class="mt-4">Calcular IMC</h1>
+
+
+
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">¿Cómo funciona el Índice de Masa Corporal (IMC)?</h2>
+                                <p class="card-text">El Índice de Masa Corporal (IMC) es una medida que relaciona el peso y la altura de una persona para evaluar su estado nutricional y determinar si se encuentra en un peso saludable.</p>
+                                <p class="card-text">El cálculo del IMC se realiza dividiendo el peso en kilogramos entre el cuadrado de la altura en metros:</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="card-text">IMC = Peso (kg) / (Altura (m) * Altura (m))</p>
+                                    </div>
+                                </div>
+                                <p class="card-text">A partir del resultado del IMC, se puede determinar la siguiente clasificación:</p>
+                                <ul>
+                                    <li>IMC < 18.5: Está por debajo de su peso ideal.</li>
+                                    <li>18.5 ≤ IMC ≤ 25: Está en su peso normal.</li>
+                                    <li>IMC > 25: Tiene sobrepeso.</li>
+                                </ul>
+                                <p class="card-text">Es importante tener en cuenta que el IMC es una medida general y no tiene en cuenta otros factores individuales como la composición corporal y la distribución de grasa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container mt-4">
+                    <div class="alert alert-info">
+                        <p>Para consultar su Índice de Masa Corporal (IMC), por favor inicie sesión o regístrese.</p>
+                        <p>Si ya tiene una cuenta, haga clic en <a href="#">Iniciar sesión</a>.</p>
+                        <p>Si no tiene una cuenta, haga clic en <a href="#">Registrarse</a> para crear una nueva cuenta.</p>
+                    </div>
+                </div>
+            </div>
+    
+            
+    
+            <div id="userData" class="row mt-4">
+
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="user p-2">
+                            <h2 class="text-center">Datos del Usuario</h2>
+                            <p><strong>Código de Usuario:</strong> 10</p>
+                            <p><strong>Nombre:</strong> Mateo</p>
+                            <p><strong>Apellido:</strong> Ortega</p>
+                            <p><strong>Email:</strong> usuario@email.com</p>
+                            <p><strong>Fecha de Nacimiento:</strong> 27/05/2005</p>
+                            <p><strong>Teléfono:</strong> 1122558877</p>
+                            <p><strong>Sexo:</strong> Masculino</p>
+                            <p><strong>Estatura:</strong> 185</p>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="mt-4">
+                            <h2>Calcular IMC</h2>
+                            <div class="form-group pb-2">
+                                <label for="weight">Peso Actual (en kg):</label>
+                                <input type="number" class="form-control" id="weight" step="0.1" required>
+                            </div>
+                            <button id="calculateButton" type="button" class="btn btn-primary">Calcular IMC</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mt-4">
+                            <h2>Registros de IMC</h2>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Peso</th>
+                                        <th>IMC</th>
+                                        <th>Situación</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="imcTableBody">
+                                    <tr>
+                                        <td>26/06/2023</td>
+                                        <td>80.5</td>
+                                        <td>85</td>
+                                        <td>Sobrepeso</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+
+            </div>
+    
+            
+        </div>
+    </section>
+
+
+
+
+
+    <div th:replace="~{/layouts/footer :: footer}"></div>
+
+
+
+
+
+
+	<script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

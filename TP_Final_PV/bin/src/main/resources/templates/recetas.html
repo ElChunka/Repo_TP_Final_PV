@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" >
+    <title>NutriVida</title>
+</head>
+<body>
+    
+	<div th:replace="~{/layouts/header :: header}"></div>
+
+
+
+
+
+    <section>
+        <div class="container">
+    
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="mt-5 text-center">Recetas para tu dieta</h1>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="mt-4">Elige una categoría:</h4>
+                    <select class="form-select" aria-label="Categoría de recetas">
+                        <option selected>Selecciona una categoría</option>
+                        <option value="1">Desayunos</option>
+                        <option value="2">Almuerzos</option>
+                        <option value="3">Cenas</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img th:src="@{/img/receta.png}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <a th:href="@{/recetas/preparacion}" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img th:src="@{/img/receta-2.png}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img th:src="@{/img/receta.png}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img th:src="@{/img/receta-2.png}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img th:src="@{/img/receta.png}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                            <a href="receta_id.html" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+
+
+
+    <div th:replace="~{/layouts/footer :: footer}"></div>
+
+
+
+
+
+
+	<script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
