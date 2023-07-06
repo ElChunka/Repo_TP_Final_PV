@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,4 +44,11 @@ public class UsuarioController {
 			modelView.setViewName("redirect:/index");
 			return modelView;
 		}
+	 @GetMapping("/codigo")
+		//public String getCodigoPage(Model model, @PathVariable(value = "usuario") Usuario usuario) {
+	 public String getCodigoPage(){
+			//model.addAttribute("usuario", usuario);
+			return "codigo_usuario";
+		}
+	 
 }
