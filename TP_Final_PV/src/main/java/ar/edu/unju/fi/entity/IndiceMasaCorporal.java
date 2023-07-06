@@ -2,7 +2,7 @@ package ar.edu.unju.fi.entity;
 
 import java.util.Date;
 
-import org.aspectj.weaver.NewConstructorTypeMunger;
+//import org.aspectj.weaver.NewConstructorTypeMunger;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;

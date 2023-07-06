@@ -51,6 +51,11 @@ public class UsuarioServiceImp implements IUsuarioService {
 		usuario = usuarioRepository.getByCodigo(codigo_buscar);
 		return usuario;
 	}
+
+	@Override
+	public Usuario getUsuario() {
+		return usuario;
+	}
 	
 	
 }

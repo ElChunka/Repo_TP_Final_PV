@@ -10,6 +10,6 @@ import ar.edu.unju.fi.entity.IndiceMasaCorporal;
 @Repository
 public interface IIMCRepository extends CrudRepository<IndiceMasaCorporal, Long> {
 
-	public List<IndiceMasaCorporal> findByCodigo(int codigo);
+	public List<IndiceMasaCorporal> findByUsuario(String usuario);
 	
 }
