@@ -5,9 +5,14 @@ import java.util.Date;
 import org.aspectj.weaver.NewConstructorTypeMunger;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Component
@@ -15,12 +20,14 @@ import jakarta.persistence.Table;
 @Table(name="IMC")
 public class IndiceMasaCorporal {
 
-@Id	
+@Id
+@GeneratedValue(strategy=GenerationType.IDENTITY)
+@Column
 	private Long id;
 @Column
 	private Date fecha_imc;
-@Column
-	private String usuario;
+@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Usuario usuario;
 @Column
 	private String estado;
 
@@ -33,7 +40,7 @@ public class IndiceMasaCorporal {
 		super();
 		this.id = id;
 		this.fecha_imc = fecha_imc;
-		this.usuario = usuario;
+		//this.usuario = usuario;
 		this.estado = estado;
 	}
 
@@ -53,11 +60,11 @@ public class IndiceMasaCorporal {
 		this.fecha_imc = fecha_imc;
 	}
 
-	public String getUsuario() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(String usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
