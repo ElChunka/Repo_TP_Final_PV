@@ -12,6 +12,7 @@ import ar.edu.unju.fi.entity.Usuario;
 @Repository
 public interface IIMCRepository extends JpaRepository<IndiceMasaCorporal, Long> {
 
+
 	public List<IndiceMasaCorporal> findByUsuario(Usuario usuario);
 	
 }

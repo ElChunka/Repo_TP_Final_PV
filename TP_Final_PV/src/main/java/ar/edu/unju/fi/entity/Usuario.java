@@ -1,7 +1,6 @@
 package ar.edu.unju.fi.entity;
 
 import java.time.LocalDate;
-import java.util.Random;
 
 import org.springframework.stereotype.Component;
 
