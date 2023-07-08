@@ -19,7 +19,7 @@ public class IMCServiceImp {
 	@Autowired
 	Usuario usuario;
 	
-	public void CalcularIMC(Double peso) {
+	public void calcularIMC(Double peso) {
     	// Obtenga el peso y la altura del usuario.
         
        IndiceMasaCorporal imc_usuario = new IndiceMasaCorporal();
@@ -35,12 +35,13 @@ public class IMCServiceImp {
         	imc_usuario.setEstado("Su IMC es " + imc + " - Tiene sobrepeso.");
         }
         imc_usuario.setFehca_imc(new Date());
-        imc_usuario.setUsuario(usuario.getNombre());// Falta crear usuario para asignar nombre
+        imc_usuario.setUsuario(usuario);// Falta crear usuario para asignar nombre
         imcRepository.save(imc_usuario);
     }
 	
 	public List<IndiceMasaCorporal> AllByUsuario() {
-		return imcRepository.findByUsuario(usuario.getNombre());// Falta usuario para devolver los imc
+
+		return imcRepository.findByUsuario(usuario);// Falta usuario para devolver los imc
 	}
 	
 	
