@@ -27,28 +27,45 @@
     
             <div class="row mt-4 justify-content-center align-items-center">
                 <div class="col-md-6">
-                    <form>
-                        <div class="mb-3">
+                    <form th:action="@{/recetas/guardar}" th:object="${receta}" method="post" enctype="multipart/form-data">
+                        <!-- <div class="mb-3">
                             <label for="inputId" class="form-label">ID</label>
                             <input type="text" class="form-control" id="inputId">
-                        </div>
+                        </div> -->
+                        
                         <div class="mb-3">
                             <label for="inputNombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="inputNombre">
+                            <input type="text" class="form-control" id="inputNombre" name="nombre" th:field="*{nombre}">
                         </div>
                         <div class="mb-3">
-                            <label for="inputCategoria" class="form-label">Categoría</label>
-                            <input type="text" class="form-control" id="inputCategoria">
+                            <label for="inputCategoria">Categoría:</label>
+                            	<select id="categoria" th:field="*{categoria}" class="form-control" required>
+                            		<option value="Carnes">Receta de Carne</option>
+                            		<option value="Bebidas">Receta de Bebida</option>
+                            		<option value="Dulces">Receta Dulce</option>
+                            		<option value="Ensaladas">Receta de Ensalada</option>
+                            		<option value="Legumbres y Cereales">Receta de Legumbres y Cerealaes</option>
+                            		<option value="Pescados">Receta de Pescado</option>
+                            		<option value="Pan">Receta de Pan</option>
+                            		<option value="Sopas y Cremas">Receta de Sopa y/o Crema</option>
+                            	</select>
                         </div>
-                        <div class="mb-3">
+                        
+                        <!--  <div class="mb-3">
                             <label for="inputIngredientes" class="form-label">Ingredientes</label>
                             <textarea class="form-control" id="inputIngredientes" rows="3"></textarea>
                             <button type="button" class="btn btn-secondary mt-2" id="agregarIngrediente">Agregar Ingrediente</button>
-                        </div>
+                        </div> -->
+                        
                         <div id="ingredientesContainer"></div>
                         <div class="mb-3">
                             <label for="inputPreparacion" class="form-label">Preparación</label>
-                            <textarea class="form-control" id="inputPreparacion" rows="5"></textarea>
+                            <textarea class="form-control" id="inputPreparacion" rows="5" name="preparacion" th:field="*{preparacion}"></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                        	<label for="file" class=form-label>Imagen de Receta</label>
+                        	<input type="file" name="file" id="file" class="form-control" th:text="${receta.imagen}"> <br>
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
@@ -57,16 +74,7 @@
         </div>
     </section>
 
-
-
-
-
     <div th:replace="~{/layouts/footer :: footer}"></div>
-
-
-
-
-
 
 	<script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
