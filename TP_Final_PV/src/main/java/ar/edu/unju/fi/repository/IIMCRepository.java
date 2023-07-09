@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
 
-@Repository
+/*@Repository
 public interface IIMCRepository extends CrudRepository<IndiceMasaCorporal, Long> {
 
 	public List<IndiceMasaCorporal> findByCodigo(int codigo);
 	
-}
+}*/

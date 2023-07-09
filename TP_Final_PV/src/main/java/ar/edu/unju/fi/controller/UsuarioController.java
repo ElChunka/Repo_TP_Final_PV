@@ -10,37 +10,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.entity.Usuario;
-import ar.edu.unju.fi.repository.IUsuarioRepository;
+import ar.edu.unju.fi.service.IUsuarioService;
 import jakarta.validation.Valid;
 
 
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
-	
-	@Autowired
-	private IUsuarioRepository userRepository;
-	
-	@Autowired
-	private Usuario usuario;
-	
-	@GetMapping("/form-usuario")
-	public String getUsuarioPage(Model model) {
-		model.addAttribute("usuario", usuario);
-		return "nuevo_usuario";
-	}
-	
-	 @PostMapping("/guardar")
-		public ModelAndView getGuardarNuevoServicioPage(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result) {
-			ModelAndView modelView = new ModelAndView("nuevo_usuario");
-			if(result.hasErrors()) {
-				modelView.setViewName("nuevo_usuario");
-				modelView.addObject("usuario", usuario);
-				return modelView;
-			}
-			userRepository.save(usuario);
-			modelView.addObject("usuario", usuario);
-			modelView.setViewName("redirect:/index");
-			return modelView;
-		}
+
+    @Autowired
+    private IUsuarioService usuarioService;
+
+    @Autowired
+    private Usuario usuario;
+
+    @GetMapping("/form-usuario")
+    public String getUsuarioPage(Model model) {
+        model.addAttribute("usuario", usuario);
+        return "nuevo_usuario";
+    }
+
+    @PostMapping("/guardar")
+    public ModelAndView getGuardarNuevoServicioPage(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result) {
+        ModelAndView modelView = new ModelAndView("nuevo_usuario");
+        if (result.hasErrors()) {
+            modelView.setViewName("nuevo_usuario");
+            modelView.addObject("usuario", usuario);
+            return modelView;
+        }
+        usuarioService.guardar(usuario);
+        modelView.addObject("usuario", usuario);
+        modelView.setViewName("redirect:/index");
+        return modelView;
+    }
 }
