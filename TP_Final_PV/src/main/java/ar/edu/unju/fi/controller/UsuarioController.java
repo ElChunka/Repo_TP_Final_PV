@@ -5,12 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.entity.Usuario;
-import ar.edu.unju.fi.repository.IUsuarioRepository;
+import ar.edu.unju.fi.service.IUsuarioService;
 import jakarta.validation.Valid;
 
 
@@ -19,14 +20,12 @@ import jakarta.validation.Valid;
 public class UsuarioController {
 	
 	@Autowired
-	private IUsuarioRepository userRepository;
+	private IUsuarioService userService;
 	
-	@Autowired
-	private Usuario usuario;
 	
 	@GetMapping("/form-usuario")
 	public String getUsuarioPage(Model model) {
-		model.addAttribute("usuario", usuario);
+		model.addAttribute("usuario", userService.getUsuario());
 		return "nuevo_usuario";
 	}
 	
@@ -38,9 +37,16 @@ public class UsuarioController {
 				modelView.addObject("usuario", usuario);
 				return modelView;
 			}
-			userRepository.save(usuario);
+			userService.Guardar(usuario);
 			modelView.addObject("usuario", usuario);
-			modelView.setViewName("redirect:/index");
+			modelView.setViewName("redirect:/usuario/codigo/"+usuario.getCodigo());
 			return modelView;
 		}
+	 
+	 @GetMapping("/codigo/{codigo}")
+	 public String getCodigoPage(Model model, @PathVariable(value = "codigo") int codigo) {
+		 model.addAttribute("usuario", userService.buscarUsuario(codigo));
+	return "codigo_usuario";
+	}
+	 
 }

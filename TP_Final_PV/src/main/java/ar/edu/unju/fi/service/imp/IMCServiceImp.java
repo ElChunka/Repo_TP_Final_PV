@@ -40,7 +40,9 @@ public class IMCServiceImp {
     }
 	
 	public List<IndiceMasaCorporal> AllByUsuario() {
-		return imcRepository.findByUsuario(usuario);
+
+		return imcRepository.findByUsuario(usuario);// Falta usuario para devolver los imc
+
 	}
 	
 	
