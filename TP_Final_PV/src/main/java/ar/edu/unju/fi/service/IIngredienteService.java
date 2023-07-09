@@ -6,4 +6,6 @@ import ar.edu.unju.fi.entity.Ingrediente;
 
 public interface IIngredienteService {
 	List<Ingrediente> getIngredientes();
+	Ingrediente getIngrediente();
+	void guardar(Ingrediente ingrediente);
 }

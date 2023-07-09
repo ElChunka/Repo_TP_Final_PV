@@ -42,5 +42,4 @@ public class RecetaServiceImp implements IRecetaService {
 	public Receta getBy(Long id) {
 		return recetaRepository.findById(id).get();
 	}
-
 }
