@@ -45,5 +45,9 @@ public class IMCServiceImp {
 
 	}
 	
+	public void guardarImc(IndiceMasaCorporal imc) {
+		imcRepository.save(imc);
+	}
+	
 	
 }
