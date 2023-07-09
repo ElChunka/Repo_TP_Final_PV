@@ -13,10 +13,23 @@ import ar.edu.unju.fi.service.IIngredienteService;
 public class IngredienteServiceImp implements IIngredienteService {
 
 	@Autowired
+	Ingrediente ingrediente;
+	
+	@Autowired
 	IIngredienteRepository ingredienteRepository; 
 	
 	@Override
 	public List<Ingrediente> getIngredientes() {
 		return ingredienteRepository.findAll();
+	}
+
+	@Override
+	public Ingrediente getIngrediente() {
+		return ingrediente;
+	}
+
+	@Override
+	public void guardar(Ingrediente ingrediente) {
+		ingredienteRepository.save(ingrediente);
 	}
 }
