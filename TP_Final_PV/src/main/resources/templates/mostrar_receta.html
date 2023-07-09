@@ -29,25 +29,20 @@
             <div class="row mt-4 justify-content-center align-items-center">
                 <div class="col-md-10">
                     <div class="card">
-                        <img th:src="@{/img/receta.png}" class="card-img-top" alt="Imagen de la receta" style="min-width: 300px">
+                        <img class="card-img-top" th:src="@{'/receta/uploads/'}+ ${filename}" th:alt="${receta.nombre}">
                         <div class="card-body">
-                            <h5 class="card-title">Nombre de la receta</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Categoría</h6>
+                            <h5 class="card-title" th:text="${receta.nombre}"></h5>
+                            <h6 class="card-subtitle mb-2 text-muted" th:text="${receta.categoria}"></h6>
                             <h6 class="card-subtitle mb-2 text-muted">Ingredientes:</h6>
                             <ul class="list-group">
                                 <li class="list-group-item">Ingrediente 1</li>
                                 <li class="list-group-item">Ingrediente 2</li>
                                 <li class="list-group-item">Ingrediente 3</li>
-                                
                             </ul>
                             <h6 class="card-subtitle mb-2 mt-4 text-muted">Preparación:</h6>
-                            <p class="card-text">Descripción de la preparación de la receta.</p>
-                            <h6 class="card-subtitle mb-2 mt-4 text-muted">Descripción:</h6>
-                            <p class="card-text">Descripción de la comida de la receta.</p>
+                            <p class="card-text" th:text="${receta.preparacion}"></p>
                             <div class="text-center">
                             <div class="text-center">
-                                <button class="btn btn-primary">Editar</button>
-                                <button class="btn btn-danger">Eliminar</button>
                             </div>
                         </div>
                     </div>

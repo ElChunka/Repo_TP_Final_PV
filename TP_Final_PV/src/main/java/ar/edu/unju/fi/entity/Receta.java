@@ -27,15 +27,14 @@ public class Receta {
 	@Column(name="rec_nombre")
 	private String nombre;
 	
-	@Column(name="rec_categoría")
-	private String categoría;
+	@Column(name="rec_categoria")
+	private String categoria;
 	
-	@Column(name="rec_preparación")
-	private String preparación;
-	
-	@Lob
+	@Column(name="rec_preparacion")
+	private String preparacion;
+
 	@Column(name="rec_imagenes")
-	private byte[] imagen;
+	private String imagen;
 	
 	@ManyToMany
 	@JoinTable(name="recetas_ingredientes",
@@ -46,11 +45,14 @@ public class Receta {
 	public Receta() {
 	}
 
-	public Receta(Long id, String nombre, String categoría, String preparación, byte[] imagen, List<Ingrediente> ingredientes) {
+	
+	
+	public Receta(Long id, String nombre, String categoria, String preparacion, String imagen,
+			List<Ingrediente> ingredientes) {
 		this.id = id;
 		this.nombre = nombre;
-		this.categoría = categoría;
-		this.preparación = preparación;
+		this.categoria = categoria;
+		this.preparacion = preparacion;
 		this.imagen = imagen;
 		this.ingredientes = ingredientes;
 	}
@@ -70,28 +72,28 @@ public class Receta {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public String getCategoría() {
-		return categoría;
+	
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setCategoría(String categoría) {
-		this.categoría = categoría;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
-	public String getPreparación() {
-		return preparación;
+	public String getPreparacion() {
+		return preparacion;
 	}
 
-	public void setPreparación(String preparación) {
-		this.preparación = preparación;
+	public void setPreparacion(String preparacion) {
+		this.preparacion = preparacion;
 	}
 
-	public byte[] getImagen() {
+	public String getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(byte[] imagen) {
+	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
 
