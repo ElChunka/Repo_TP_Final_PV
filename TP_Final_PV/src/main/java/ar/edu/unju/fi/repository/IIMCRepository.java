@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
 import ar.edu.unju.fi.entity.Usuario;
 
+
 @Repository
 public interface IIMCRepository extends JpaRepository<IndiceMasaCorporal, Long> {
 
 
+
 	public List<IndiceMasaCorporal> findByUsuario(Usuario usuario);
 	
-}
+}*/

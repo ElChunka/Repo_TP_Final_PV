@@ -28,10 +28,16 @@
             <div class="row mt-4 justify-content-center align-items-center">
                 <div class="col-md-6 ">
                     <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="post">
-                        <div class="mb-3">
+                        <!--  <div class="mb-3 d-none">
                             <label for="inputId" class="form-label">ID</label>
                             <input type="text" class="form-control" id="inputId" th:field="*{id}" th:value="${usuario.id}" disabled="disabled">
                         </div>
+                        
+                        <div class="mb-3 d-none">
+                            <label for="inputId" class="form-label">Codigo</label>
+                            <input type="text" class="form-control" id="inputId" th:field="*{id}" th:value="${usuario.codigo}" disabled="disabled">
+                        </div> -->
+                        
                         <div class="mb-3">
                             <label for="inputNombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="inputNombre" th:field="*{nombre}">

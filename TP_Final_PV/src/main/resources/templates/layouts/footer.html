@@ -25,26 +25,26 @@
                         <div class="col">
                             <h5>Secciones</h5>
                             <ul class="list-unstyled">
-                                <li><a href="#" class="text-decoration-none">Home</a></li>
-                                <li><a href="#" class="text-decoration-none">Servicios</a></li>
-                                <li><a href="#" class="text-decoration-none">Recetas</a></li>
+                                <li><a th:href="@{/index}" class="text-decoration-none">Home</a></li>
+                                <li><a th:href="@{/recetas/lista}" class="text-decoration-none">Recetas</a></li>
+                                <li><a th:href="@{/contacto/formulario}" class="text-decoration-none">Contacto</a></li>
                             </ul>
                         </div>
                         <div class="col">
                             <h5>Testimonios</h5>
                             <ul class="list-unstyled">
-                                <li><a href="#" class="text-decoration-none">Experiencia</a></li>
-                                <li><a href="#" class="text-decoration-none">Testimonio 2</a></li>
-                                <li><a href="#" class="text-decoration-none">Testimonio 3</a></li>
+                                <li><a th:href="@{/gestion/datos}" class="text-decoration-none">Compartir experiencia</a></li>
+                                <li><a th:href="@{/testimonios/lista}" class="text-decoration-none">Testimonios</a></li>
+                                
                             </ul>
                         </div>
                         <div class="col">
                             <h5>Contacto</h5>
                             <ul class="list-unstyled">
-                                <li><a href="#" class="text-decoration-none"><i class="bi bi-facebook"></i> Facebook</a></li>
-                                <li><a href="#" class="text-decoration-none"><i class="bi bi-envelope"></i> Email</a></li>
-                                <li><a href="#" class="text-decoration-none"><i class="bi bi-whatsapp"></i> WhatsApp</a></li>
-                                <li><a href="#" class="text-decoration-none"><i class="bi bi-youtube"></i> YouTube</a></li>
+                                <li><a th:href="@{https://www.facebook.com/NutriVida97}" class="text-decoration-none"><i class="bi bi-facebook"></i> Facebook</a></li>
+                                <li><a th:href="@{/contacto/formulario}" class="text-decoration-none"><i class="bi bi-envelope"></i> Email</a></li>
+                                <li><a th:href="@{https://chat.whatsapp.com/DjGPw7vw1zeCyjNzhhBppi}" class="text-decoration-none"><i class="bi bi-whatsapp"></i> WhatsApp</a></li>
+                                <li><a th:href="@{https://www.youtube.com/@nutrivida0718}" class="text-decoration-none"><i class="bi bi-youtube"></i> YouTube</a></li>
                             </ul>
                         </div>
                     </div>

@@ -72,3 +72,19 @@ a.h4 {
 .secciones ul li a {
     color: #575e37;
 }
+
+
+
+
+
+.comentario {
+	font-size:1.2em;
+}
+
+.fecha-comentario {
+	font-size:0.8em;
+}
+
+.accordion-button, accordion-collapse collapse {
+	background-color:#CCD6A6;
+}

@@ -1,6 +1,6 @@
 package ar.edu.unju.fi.service.imp;
 
-import java.util.List;
+
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,47 +10,57 @@ import ar.edu.unju.fi.entity.Usuario;
 import ar.edu.unju.fi.repository.IUsuarioRepository;
 import ar.edu.unju.fi.service.IUsuarioService;
 
+
+
 @Service
 public class UsuarioServiceImp implements IUsuarioService {
 
-	
-	@Autowired
-	private IUsuarioRepository usuarioRepository;
-	
-	@Autowired
-	private Usuario usuario;
-	
-	/*@Override			//posiblemte mas tarde
-	public List<Usuario> getUsuarios() {
-		return usuarioRepository.findAll();
-	}*/
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
 
-	@Override
-	public void Guardar(Usuario usuario) {
-		boolean unico;
-		Random random = new Random();
-		int Codigo_generado; 
-		
-		do
-		{
-			Codigo_generado = random.nextInt(9000) + 1000;
-			unico = true;
-			for( Usuario user : usuarioRepository.findAll())
-			{
-				if(user.getCodigo() == Codigo_generado)
-					unico = false;
-			}
-		}while(unico == false);
-		
-		usuario.setCodigo(Codigo_generado);
-		usuarioRepository.save(usuario);
+    @Override
+    public void guardar(Usuario usuario) {
+        generarYAsignarCodigo(usuario);
+        usuarioRepository.save(usuario);
+    }
+
+    private void generarYAsignarCodigo(Usuario usuario) {
+        boolean unico = false;
+        Random random = new Random();
+        int codigoGenerado;
+
+        do {
+            codigoGenerado = random.nextInt(9000) + 1000;
+            Usuario usuarioExistente = usuarioRepository.findByCodigo(codigoGenerado);
+            if (usuarioExistente == null) {
+                unico = true;
+            }
+        } while (!unico);
+
+        usuario.setCodigo(codigoGenerado);
+    }
+
+    @Override
+    public Usuario buscarUsuario(int codigo_buscar) {
+        return usuarioRepository.findByCodigo(codigo_buscar);
+    }
+    
+    @Override
+	public boolean verificarCodigoUsuario(int codigoUsuario) {
+		Usuario usuario = buscarUsuario(codigoUsuario);
+		return usuario != null;
 	}
 
+    @Override
+    public Usuario buscarUsuarioId(Long usuarioId) {
+        return usuarioRepository.findById(usuarioId).orElse(null);
+    }
+
 	@Override
-	public Usuario buscarUsuario(int codigo_buscar) {
-		usuario = usuarioRepository.getByCodigo(codigo_buscar);
-		return usuario;
+	public Usuario obtenerUsuarioPorCodigo(int codigoUsuario) {
+	    return usuarioRepository.findByCodigo(codigoUsuario);
 	}
+
 
 	@Override
 	public Usuario getUsuario() {
@@ -58,4 +68,5 @@ public class UsuarioServiceImp implements IUsuarioService {
 	}
 	
 	
+
 }

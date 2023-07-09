@@ -18,6 +18,7 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
+
 	
 	@Autowired
 	private IUsuarioService userService;
@@ -49,4 +50,5 @@ public class UsuarioController {
 	return "codigo_usuario";
 	}
 	 
+
 }

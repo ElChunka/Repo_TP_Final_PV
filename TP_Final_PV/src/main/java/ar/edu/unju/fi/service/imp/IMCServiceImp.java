@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
 import ar.edu.unju.fi.entity.Usuario;
 import ar.edu.unju.fi.repository.IIMCRepository;
-@Service
+/*@Service
 public class IMCServiceImp {
 
 	@Autowired
@@ -45,4 +45,4 @@ public class IMCServiceImp {
 	}
 	
 	
-}
+}*/
