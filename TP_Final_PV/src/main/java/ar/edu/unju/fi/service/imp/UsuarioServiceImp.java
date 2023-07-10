@@ -66,7 +66,16 @@ public class UsuarioServiceImp implements IUsuarioService {
 	public Usuario getUsuario() {
 		return null;
 	}
-	
-	
 
+
+	@Override
+	public Usuario getUltimoUsuario() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Usuario getUsuarioFinal() {
+		return usuarioRepository.findUltimoDato();
+	}	
 }
