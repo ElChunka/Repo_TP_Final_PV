@@ -42,13 +42,9 @@ public class ServicioController {
     
     
     @PostMapping("/guardar")
-    public ModelAndView getGuardarNuevoImcPage(@RequestParam("peso") Double peso, ServicioController servicio, BindingResult result,  Model model) {
+    public ModelAndView getGuardarNuevoImcPage(@RequestParam("peso") Double peso, @RequestParam("codigo") int codigo, Model model) {
     	ModelAndView modelView = new ModelAndView("mostrar_imc");
-    	this.imcService.calcularIMC(peso);
-    	if(result.hasErrors()) {
-    		modelView.setViewName(getImcPage());
-    		modelView.addObject("imc", servicio);
-    	}
+    	imcService.calcularIMC(peso, codigo);
     	return modelView;
     }
     

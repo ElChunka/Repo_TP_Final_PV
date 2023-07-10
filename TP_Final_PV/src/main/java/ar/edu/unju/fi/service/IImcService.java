@@ -7,6 +7,6 @@ import ar.edu.unju.fi.entity.IndiceMasaCorporal;
 public interface IImcService {
 	
 	List<IndiceMasaCorporal> listarImcPorUsuario(Long usuarioId);
-	void calcularIMC(Double peso);
+	void calcularIMC(Double peso, int codigo);
 
 }

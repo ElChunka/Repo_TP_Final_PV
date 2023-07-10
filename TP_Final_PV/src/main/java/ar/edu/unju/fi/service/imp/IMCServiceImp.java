@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.service.imp;
 
+import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,21 +25,24 @@ public class IMCServiceImp {
 	@Autowired
 	Usuario usuario;
 	
-	public void calcularIMC(Double peso) {
+	public void calcularIMC(Double peso, int codigo) {
     	// Obtenga el peso y la altura del usuario.
-       Usuario usuario = this.usuRep.findUltimoDato();
+       Usuario usuario = usuRep.findByCodigo(codigo);
        IndiceMasaCorporal imc_usuario = new IndiceMasaCorporal();
+       DecimalFormat formato = new DecimalFormat("#.#");
+       String imcFormateado;
         // Calcular el Indice de Masa Corporal
         double imc = peso / (usuario.getEstatura() * usuario.getEstatura());
+        imcFormateado = formato.format(imc);
         // Display a message based on the BMI result.
         if (imc < 18.5) {
-        	imc_usuario.setEstado(/*"Su IMC es " + imc + " -*/ "Está por debajo de su peso ideal");
+        	imc_usuario.setEstado("Su IMC es " + imcFormateado + " -Está por debajo de su peso ideal");
         } else if (imc >= 18.5 && imc <= 25) {
-        	imc_usuario.setEstado(/*"Su IMC es " + imc + " - */"Está en su peso normal.");
+        	imc_usuario.setEstado("Su IMC es  " + imcFormateado + " - Está en su peso normal.");
         } else {
-        	imc_usuario.setEstado(/*"Su IMC es " + imc + " - */"Tiene sobrepeso.");
+        	imc_usuario.setEstado("Su IMC es " + imcFormateado + " - Tiene sobrepeso.");
         }
-        imc_usuario.setFehca_imc(new Date());
+        imc_usuario.setFecha_imc(LocalDate.now());
         imc_usuario.setUsuario(usuario);
         imcRepository.save(imc_usuario);
     }
