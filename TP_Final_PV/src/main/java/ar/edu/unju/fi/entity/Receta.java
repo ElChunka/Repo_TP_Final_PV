@@ -39,7 +39,7 @@ public class Receta {
 	@Column(name="rec_preparacion")
 	private String preparacion;
 
-	@NotBlank(message="Debe ingresar una imagen.")
+	
 	@Column(name="rec_imagenes")
 	private String imagen;
 	

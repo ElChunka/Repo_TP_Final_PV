@@ -62,7 +62,7 @@
                         
                         <div class="mb-3">
                         	<label for="file" class=form-label>Imagen de Receta</label>
-                        	<input type="file" name="file" id="file" class="form-control" th:text="${receta.imagen}"> <br>        	
+                        	<input type="file" name="file" id="file" class="form-control" th:text="${receta.imagen}" required> <br>        	
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>

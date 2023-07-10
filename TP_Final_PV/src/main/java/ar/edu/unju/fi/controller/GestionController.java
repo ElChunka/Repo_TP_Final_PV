@@ -56,14 +56,14 @@ public class GestionController {
     public String verificarCodigoUsuario(@RequestParam("codigoUsuario") int codigoUsuario, Model model) {
     	 // Buscar el usuario en función del código de usuario proporcionado
     	Usuario usuario = usuarioService.buscarUsuario(codigoUsuario);
-        if (usuario != null) {
+        if (usuario.getCodigo() == 9999 || usuario.getCodigo()==7777) {
         	// Si se encuentra un usuario válido:
             // Establecer los atributos en el modelo
             model.addAttribute("usuarioValido", true);
             model.addAttribute("usuario", usuario);
             
             // Obtener los testimonios del usuario y pasarlos al modelo
-            List<Testimonio> testimonios = testimonioService.listarTestimoniosPorUsuario(usuario.getId());
+            List<Testimonio> testimonios = testimonioService.listarTestimonios();
             testimonios.sort(Comparator.comparing(Testimonio::getFecha)); // Orden ascendente
             Collections.reverse(testimonios); // Invertir el orden para obtener descendente
             model.addAttribute("testimonios", testimonios);

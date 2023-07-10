@@ -37,8 +37,10 @@ public class TestimonioController {
 	 // Maneja la solicitud GET para mostrar todos los testimonios.
 	 
 	
-    @GetMapping("/lista")
+   @GetMapping("/lista")
     public String mostrarTodosTestimonios(Model model) {
+    
+    	model.addAttribute("usuario", new Usuario());
     	// Obtener la lista de testimonios del servicio
         List<Testimonio> testimonios = testimonioService.listarTestimonios();
         
@@ -47,9 +49,58 @@ public class TestimonioController {
         Collections.reverse(testimonios); // Invertir el orden para obtener descendente
         
      // Agregar la lista de testimonios al modelo para que esté disponible en la vista
-        model.addAttribute("testimonios", testimonios);
+        model.addAttribute("testimoniosLista", testimonios);
         return "testimonios";
     }
+    
+    
+    /*@GetMapping("/lista")
+    public String mostrarFormularioCodigo(Model model) {
+        model.addAttribute("usuario", new Usuario());
+        return "testimonios";
+    }*/
+    
+    
+    
+    @PostMapping("/verificar-codigo")
+    public String verificarCodigoUsuario(@RequestParam("codigoUsuario") int codigoUsuario, Model model) {
+    	 // Buscar el usuario en función del código de usuario proporcionado
+    	Usuario usuario = usuarioService.buscarUsuario(codigoUsuario);
+        if (usuario != null) {
+        	// Si se encuentra un usuario válido:
+            // Establecer los atributos en el modelo
+            model.addAttribute("usuarioValido", true);
+            model.addAttribute("usuario", usuario);
+            
+            // Obtener los testimonios del usuario y pasarlos al modelo
+            List<Testimonio> testimonios = testimonioService.listarTestimoniosPorUsuario(usuario.getId());
+            testimonios.sort(Comparator.comparing(Testimonio::getFecha)); // Orden ascendente
+            Collections.reverse(testimonios); // Invertir el orden para obtener descendente
+            model.addAttribute("testimonios", testimonios);
+        } else {
+        	
+        	// Si no se encuentra un usuario válido:
+            // Establecer el atributo en el modelo indicando que el usuario no es válido
+        	List<Testimonio> testimonios = testimonioService.listarTestimonios();
+        	testimonios.sort(Comparator.comparing(Testimonio::getFecha)); // Orden ascendente
+            Collections.reverse(testimonios); // Invertir el orden para obtener descendente
+            
+            
+            List<Testimonio> testimoniosLista = testimonioService.listarTestimonios();
+         // Ordenar los testimonios por fecha en orden descendente (más reciente primero)
+            testimoniosLista.sort(Comparator.comparing(Testimonio::getFecha)); // Orden ascendente
+            Collections.reverse(testimoniosLista); // Invertir el orden para obtener descendente
+            
+            model.addAttribute("testimoniosLista", testimoniosLista);
+            model.addAttribute("testimonios", testimonios);
+            model.addAttribute("usuarioValido", false);
+            
+        }
+     // Devolver el nombre de la vista para la página de gestión de datos
+        return "testimonios";
+    }
+    
+    
     
     
     // Maneja la solicitud GET para mostrar el formulario de nuevo testimonio.
