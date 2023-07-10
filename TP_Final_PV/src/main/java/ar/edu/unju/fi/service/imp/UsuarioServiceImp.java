@@ -67,7 +67,7 @@ public class UsuarioServiceImp implements IUsuarioService {
 
 	@Override
 	public Usuario getUsuario() {
-		return usuario;
+		return null;
 	}
 	
 	
