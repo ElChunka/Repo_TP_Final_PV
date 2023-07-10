@@ -38,7 +38,7 @@ public class UsuarioController {
 				modelView.addObject("usuario", usuario);
 				return modelView;
 			}
-			userService.Guardar(usuario);
+			userService.guardar(usuario);
 			modelView.addObject("usuario", usuario);
 			modelView.setViewName("redirect:/usuario/codigo/"+usuario.getCodigo());
 			return modelView;
