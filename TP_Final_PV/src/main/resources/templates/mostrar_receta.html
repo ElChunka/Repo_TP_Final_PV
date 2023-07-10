@@ -29,7 +29,7 @@
             <div class="row mt-4 justify-content-center align-items-center">
                 <div class="col-md-10">
                     <div class="card">
-                        <img class="card-img-top" th:src="@{'/receta/uploads/'}+ ${filename}" th:alt="${receta.nombre}">
+                        <img class="card-img-top" th:src="@{'/recetas/uploads/'}+ ${filename}" th:alt="${receta.nombre}">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${receta.nombre}"></h5>
                             <h6 class="card-subtitle mb-2 text-muted" th:text="${receta.categoria}"></h6>

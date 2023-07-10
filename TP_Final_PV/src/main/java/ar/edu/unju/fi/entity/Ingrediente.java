@@ -23,8 +23,42 @@ public class Ingrediente {
 	private Long id;
 	
 	@Column(name="ing_nombre")
-	private String Nombre;
+	private String nombre;
 	
 	@ManyToMany(mappedBy="ingredientes")
 	private List<Receta> recetas;
+
+	public Ingrediente() {
+	}
+	
+	public Ingrediente(Long id, String nombre, List<Receta> recetas) {
+		this.id = id;
+		this.nombre = nombre;
+		this.recetas = recetas;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public List<Receta> getRecetas() {
+		return recetas;
+	}
+
+	public void setRecetas(List<Receta> recetas) {
+		this.recetas = recetas;
+	}
+	
 }

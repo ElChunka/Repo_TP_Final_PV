@@ -61,5 +61,12 @@ public class UsuarioServiceImp implements IUsuarioService {
 	    return usuarioRepository.findByCodigo(codigoUsuario);
 	}
 
-    
+
+	@Override
+	public Usuario getUsuario() {
+		return null;
+	}
+	
+	
+
 }
