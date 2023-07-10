@@ -24,9 +24,11 @@ public class IMCServiceImp {
 	IUsuarioRepository usuRep;
 	@Autowired
 	Usuario usuario;
-	
+
+	//Calcula el IMC (Indice de Masa Corporal) segun la altura que se obtiene
+	//de sus datos ingresados y el peso
 	public void calcularIMC(Double peso, int codigo) {
-    	// Obtenga el peso y la altura del usuario.
+    	// Obtenga el IMC (Indice de Masa Corporal)
        Usuario usuario = usuRep.findByCodigo(codigo);
        IndiceMasaCorporal imc_usuario = new IndiceMasaCorporal();
        DecimalFormat formato = new DecimalFormat("#.#");
@@ -46,7 +48,8 @@ public class IMCServiceImp {
         imc_usuario.setUsuario(usuario);
         imcRepository.save(imc_usuario);
     }
-	
+
+	//Obtiene una lista IMC (Indice de Masa Corporal) de un usuario por su ID.
 	public List<IndiceMasaCorporal> AllByUsuario(Long usuarioId) {
 
 		return imcRepository.findByUsuarioId(usuarioId);
