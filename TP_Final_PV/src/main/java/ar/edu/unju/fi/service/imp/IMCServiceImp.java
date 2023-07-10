@@ -36,7 +36,7 @@ public class IMCServiceImp {
         imcFormateado = formato.format(imc);
         // Display a message based on the BMI result.
         if (imc < 18.5) {
-        	imc_usuario.setEstado("Su IMC es " + imcFormateado + " -Está por debajo de su peso ideal");
+        	imc_usuario.setEstado("Su IMC es " + imcFormateado + " - Está por debajo de su peso ideal");
         } else if (imc >= 18.5 && imc <= 25) {
         	imc_usuario.setEstado("Su IMC es  " + imcFormateado + " - Está en su peso normal.");
         } else {
