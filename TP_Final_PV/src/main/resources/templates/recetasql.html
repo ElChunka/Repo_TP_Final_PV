@@ -23,7 +23,7 @@
                 </div>
             </div>
     
-            
+            <!-- Filtro de recetas por categoria-->
             <div class="dropdown">
 			  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 			    Categoria
@@ -32,7 +32,7 @@
 			    <li  th:each="categoria : ${categorias}"><a class="dropdown-item" th:href="@{/recetas/lista/{categoria}(categoria=${categoria})}" th:text="${categoria}"></a></li>
 			  </ul>
 			</div>
-    
+    <!--Recetas con imagen, nombre y categoria -->
             <div class="row mt-4">
                 <div class="col-md-4" th:each="receta : ${recetas}">
                     <div class="card mb-3" >
