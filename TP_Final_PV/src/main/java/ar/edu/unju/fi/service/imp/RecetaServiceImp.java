@@ -19,7 +19,7 @@ public class RecetaServiceImp implements IRecetaService {
 	Receta receta;
 	
 	@Override
-	public List<Receta> getRecetas() {
+	public List<Receta> getRecetas() { //devuelve todas las recetas
 		return recetaRepository.findAll();
 	}
 
@@ -29,17 +29,17 @@ public class RecetaServiceImp implements IRecetaService {
 	}
 
 	@Override
-	public void guardar(Receta receta) {
+	public void guardar(Receta receta) { //guarda las recetas
 		recetaRepository.save(receta);
 	}
 
 	@Override
-	public List<Receta> getRecetaCategoria(String categoria) {
+	public List<Receta> getRecetaCategoria(String categoria) { //devuelve recetas buscadas por categoria
 		return recetaRepository.findByCategoria(categoria);
 	}
 
 	@Override
 	public Receta getBy(Long id) {
-		return recetaRepository.findById(id).get();
+		return recetaRepository.findById(id).get(); //devuelve la receta buscada por id para ver la receta y su preparacion
 	}
 }
