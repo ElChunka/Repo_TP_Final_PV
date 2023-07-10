@@ -16,4 +16,6 @@ public interface IUsuarioService {
 
 	Usuario getUsuario();
 
+	Usuario getUltimoUsuario();
+	Usuario getUsuarioFinal();
 }

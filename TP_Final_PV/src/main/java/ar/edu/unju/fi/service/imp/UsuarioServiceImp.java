@@ -14,7 +14,10 @@ import ar.edu.unju.fi.service.IUsuarioService;
 
 @Service
 public class UsuarioServiceImp implements IUsuarioService {
-
+	
+	@Autowired
+	private Usuario usuario;
+	
     @Autowired
     private IUsuarioRepository usuarioRepository;
     
@@ -69,7 +72,9 @@ public class UsuarioServiceImp implements IUsuarioService {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
-	
 
+	@Override
+	public Usuario getUsuarioFinal() {
+		return usuarioRepository.findUltimoDato();
+	}	
 }
