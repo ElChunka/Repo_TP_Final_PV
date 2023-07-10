@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 //import ar.edu.unju.fi.entity.IMC;
 import ar.edu.unju.fi.entity.IndiceMasaCorporal;
-import ar.edu.unju.fi.entity.Testimonio;
+
 import ar.edu.unju.fi.entity.Usuario;
 import ar.edu.unju.fi.service.IUsuarioService;
 import ar.edu.unju.fi.service.imp.IMCServiceImp;
@@ -43,7 +43,7 @@ public class ServicioController {
     }
     
     
-    
+    //Solicitud Post para guardar un nuevo IMC (Indice de Masa Corporal)
     @PostMapping("/guardar")
     public ModelAndView getGuardarNuevoImcPage(@RequestParam("peso") Double peso, @RequestParam("codigo") int codigo, Model model) {
     	ModelAndView modelView = new ModelAndView("mostrar_imc");
