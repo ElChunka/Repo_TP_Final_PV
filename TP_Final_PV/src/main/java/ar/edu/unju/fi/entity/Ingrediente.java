@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Component
 @Entity
@@ -23,6 +24,7 @@ public class Ingrediente {
 	private Long id;
 	
 	@Column(name="ing_nombre")
+	@NotBlank(message="Debe ingresar un nombre para el ingrediente")
 	private String nombre;
 	
 	@ManyToMany(mappedBy="ingredientes")

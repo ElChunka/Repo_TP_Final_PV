@@ -38,6 +38,7 @@ public class IngredienteController {
 	public ModelAndView getGuardarNuevoIngredientePage(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult result) {
 		ModelAndView modelView = new ModelAndView("recetasql");
 		if(result.hasErrors()) {
+			modelView.setViewName("nuevo_ingrediente");
 			modelView.addObject("ingrediente", ingrediente);
 			return modelView;
 		}

@@ -38,7 +38,7 @@ public class UsuarioServiceImp implements IUsuarioService {
             if (usuarioExistente == null) {
                 unico = true;
             }
-        } while (!unico);
+        } while (!unico && codigoGenerado != 9999);
 
         usuario.setCodigo(codigoGenerado);
     }
