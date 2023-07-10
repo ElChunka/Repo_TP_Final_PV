@@ -34,11 +34,10 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Ingresar</button>
                     </form>
-                    <div th:if="${usuarioValido}" class="mt-5">
-    				<h2 class="text-center">¡Bienvenido <span th:text="${usuario.nombre}+' '+${usuario.apellido}"></span>!</h2>
-    				<a th:href="@{/testimonios/nuevo(codigoUsuario=${usuario.codigo})}" class="btn btn-success">Agregar testimonio</a>
-    				<a th:href="@{/recetas/nueva-receta}" class="btn btn-success">Agregar Receta</a>
-  					<a th:href="@{/ingredientes/nuevo}" class="btn btn-success">Agregar Ingrediente</a>
+                    <div th:if="${usuarioValido}" class="mt-5 p-3 testimonios-section text-center">
+    					<h3 class="text-center mb-3">¡Has ingresado como <span th:text="${usuario.nombre}"></span>!</h3>
+    					<a th:href="@{/recetas/nueva-receta}" class="btn btn-danger">Agregar Receta</a>
+  						<a th:href="@{/ingredientes/nuevo}" class="btn btn-info">Agregar Ingrediente</a>
 					</div>
                 </div>
             </div>
@@ -59,7 +58,7 @@
     
     <section th:if="${usuarioValido}">
         <div class="container mt-5">
-            <h3 class="text-center">Tus Testimonios</h3>
+            <h3 class="text-center">Testimonios de usuarios</h3>
             <div th:each="testimonio : ${testimonios}" class="card mt-3">
                 <div class="row g-0">
                     <div class="col-md-2 col-sm-3 p-2">
@@ -73,7 +72,6 @@
                                 <span th:text="${testimonio.usuario.codigo} + '@' + ${testimonio.usuario.apellido}"></span>
                             </h6>
                             <div class="d-flex justify-content-end">
-                                <a th:href="@{/testimonios/modificar(id=${testimonio.id})}" class="btn btn-primary me-2">Editar</a>
                                 <a th:href="@{/testimonios/eliminar(id=${testimonio.id})}" class="btn btn-danger">Eliminar</a>
                             </div>
                         </div>

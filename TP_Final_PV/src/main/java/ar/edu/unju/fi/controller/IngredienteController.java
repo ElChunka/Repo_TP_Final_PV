@@ -31,6 +31,7 @@ public class IngredienteController {
 	@GetMapping("/nuevo")
 	public String getIngredientesFormPage(Model model) {
 		model.addAttribute("ingrediente", ingredienteService.getIngrediente());
+		model.addAttribute("ingredientes", ingredienteService.getIngredientes());
 		return "nuevo_ingrediente";
 	}
 	
@@ -45,6 +46,7 @@ public class IngredienteController {
 		
 		ingredienteService.guardar(ingrediente);
 		modelView.addObject("recetas", recetaService.getRecetas());
+		modelView.setViewName("redirect:/ingredientes/nuevo");
 		return modelView;
 	}
 }

@@ -34,11 +34,52 @@
                             <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="text-danger"></span>
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a th:href="@{/gestion/datos}" class="btn btn-secondary">Ir al índice</a>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+    
+    
+    <section>
+    	<div class="container">
+    		<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se mostrarán los ingredientes guardados -->
+                <tr th:each="ingrediente : ${ingredientes}">
+                    <td th:text="${ingrediente.nombre}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    	
+    	</div>
+    
+    
+    
+    </section>
+    
+    
+    <
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     <div th:replace="~{/layouts/footer :: footer}"></div>
 

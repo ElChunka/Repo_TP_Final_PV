@@ -1,0 +1,3 @@
+INSERT INTO usuarios (user_codigo, user_nombre, user_apellido, user_email, user_fecha_de_nacimiento, user_telefono, user_sexo, user_estatura, user_admin) VALUES (9999, 'Admin', 'Admin', 'admin@example.com', '2001-01-01', '1234567890', 'M', 180.0, 1);
+INSERT INTO usuarios (user_codigo, user_nombre, user_apellido, user_email, user_fecha_de_nacimiento, user_telefono, user_sexo, user_estatura, user_admin) VALUES (7777, 'Admin2', 'Admin2', 'admin@example.com', '2001-01-01', '1234567890', 'M', 180.0, 1);
+INSERT INTO ingredientes (ing_nombre) VALUES ('pollo'),('carne'),('papas'),('cebolla'),('Harina'),('pejerrey'),('harina'),('tomates'),('caldo de pollo'),('zapallo'),('sal'),('banana'),('azucar'),('durazno'),('pera'),('arroz');

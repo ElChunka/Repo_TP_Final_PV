@@ -39,6 +39,7 @@ public class Receta {
 	@Size(min=30, max=5000, message="Debe escribir una preparacion de al menos 30 caracteres.")
 	private String preparacion;
 
+
 	@Column(name="rec_imagenes")
 	@NotBlank(message="Debe ingresar una imagen.")
 	private String imagen;
