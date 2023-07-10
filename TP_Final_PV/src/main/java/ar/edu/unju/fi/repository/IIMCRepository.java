@@ -14,5 +14,6 @@ import ar.edu.unju.fi.entity.Usuario;
 @Repository
 public interface IIMCRepository extends JpaRepository<IndiceMasaCorporal, Long> {
 
+	//Busca IMC (Indice de Masa Corporal) por la ID de usuario
 	List<IndiceMasaCorporal> findByUsuarioId(Long usuarioId);
 }
