@@ -26,52 +26,23 @@
                 <p class="lead">Esta página te permite calcular tu peso ideal basado en tu estatura y edad.</p>
                 <hr class="my-4">
                 <p>Ingresa tu código de usuario para obtener tu peso ideal personalizado.</p>
-                <p>Si aún no tienes un código de usuario, regístrate para acceder a esta herramienta.</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Registrarse</a>
-                <a class="btn btn-secondary btn-lg" href="#" role="button">Iniciar Sesión</a>
-            </div>
-    
-            <div class="row justify-content-center align-items-center text-center peso-ideal">
-
-                <div class="col-md-6">
-                    <div class="mt-4">
-                        <h2>Datos del Usuario</h2>
-                        <p><strong>Código de Usuario:</strong> 10</p>
-                        <p><strong>Estatura (cm):</strong> 170</p>
-                        <p><strong>Edad:</strong> 20</p>
-                      <!-- <div>
-                            <label>Codigo</label>
-                            <input type="number" class="form" id="Peso" placeholder="Ingrese su nombre">
-                       </div>
-                       <div>
-                            <label>Altura</label>
-                            <input type="number" class="form" id="Altura" placeholder="Ingrese su nombre">
-                       </div>
-                       <div>
-                            <label>Edad</label>
-                            <input type="number" class="form" id="Edad" placeholder="Ingrese su nombre">
-                       </div> -->
-                    </div>
-                </div>
-
-            <div class="col-md-6">
-                    <div class="mt-4">
-                        <h2>Peso Ideal</h2>
-                        <p><strong>Peso Ideal:</strong> 75 kg</p>
-                    
-                        <div>
-                            <label>Peso</label>
-                            <input type="number">
-                        </div> <br>
-                        <button type="submit" class="btn btn-primary">Mostrar Peso Ideal</button>
-                    
-                    </div>
-                </div>
-            
                 
-            </div>
-
-        </div>
+                <div class="row justify-content-center align-items-center mt-4">
+				      <div class="col-md-6">
+				      <form action="/servicios/verificar-codigo-peso" method="POST" class="text-center">
+				      <div class="mb-3">
+				      <input type="number" class="form-control col-md-5" id="inputCodigoUsuario"
+				        name="codigoUsuario" placeholder="Ingrese su código de usuario" required>
+				      </div>
+				      <button type="submit" class="btn btn-primary">Ingresar</button>
+				      </form>
+				      <div th:if="${usuarioValido}" class="mt-5">
+						<span th:text="'Su Peso Ideal es ' + ${usuario.CalcularPesoIdeal} + 'Kg.'"></span>
+						</div>
+				 		</div>
+            	</div>
+ 
+       		</div>
     </section>
 
 

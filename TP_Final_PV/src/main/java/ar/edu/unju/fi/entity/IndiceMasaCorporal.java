@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 //import org.aspectj.weaver.NewConstructorTypeMunger;
@@ -25,7 +26,7 @@ public class IndiceMasaCorporal {
 @Column
 	private Long id;
 @Column
-	private Date fecha_imc;
+	private LocalDate fecha_imc;
 @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Usuario usuario;
 @Column
@@ -36,11 +37,11 @@ public class IndiceMasaCorporal {
 		// TODO Auto-generated constructor stub
 	}
 
-	public IndiceMasaCorporal(Long id, Date fecha_imc, String usuario, String estado) {
+	public IndiceMasaCorporal(Long id, LocalDate fecha_imc, Usuario usuario, String estado) {
 		super();
 		this.id = id;
 		this.fecha_imc = fecha_imc;
-		//this.usuario = usuario;
+		this.usuario = usuario;
 		this.estado = estado;
 	}
 
@@ -52,11 +53,14 @@ public class IndiceMasaCorporal {
 		this.id = id;
 	}
 
-	public Date getFecha_imc() {
+	
+	public LocalDate getFecha_imc() {
 		return fecha_imc;
 	}
 
-	public void setFehca_imc(Date fecha_imc) {
+
+
+	public void setFecha_imc(LocalDate fecha_imc) {
 		this.fecha_imc = fecha_imc;
 	}
 
@@ -68,7 +72,7 @@ public class IndiceMasaCorporal {
 		this.usuario = usuario;
 	}
 
-	public String isEstado() {
+	public String getEstado() {
 		return estado;
 	}
 

@@ -10,6 +10,8 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" >
     <title>NutriVida</title>
 </head>
+
+
 <body>
     
 	<div th:replace="~{/layouts/header :: header}"></div>
@@ -48,21 +50,21 @@
                     </div>
                 </div>
 
-                <div class="container mt-4">
+                <!-- <div class="container mt-4">
                     <div class="alert alert-info">
                         <p>Para consultar su Índice de Masa Corporal (IMC), por favor inicie sesión o regístrese.</p>
                         <p>Si ya tiene una cuenta, haga clic en <a href="#">Iniciar sesión</a>.</p>
                         <p>Si no tiene una cuenta, haga clic en <a href="#">Registrarse</a> para crear una nueva cuenta.</p>
                     </div>
-                </div>
+                </div> -->
             </div>
     
             
     
             <div id="userData" class="row mt-4">
 
-                <div class="row">
-                    <div class="col-md-7">
+                 <div class="row">
+                    <!-- <div class="col-md-7">
                         <div class="user p-2">
                             <h2 class="text-center">Datos del Usuario</h2>
                             <p><strong>Código de Usuario:</strong> 10</p>
@@ -74,22 +76,48 @@
                             <p><strong>Sexo:</strong> Masculino</p>
                             <p><strong>Estatura:</strong> 185</p>
                         </div>
-                    </div>
-        
-                    <div class="col-md-4">
+                    </div> -->
+        			
+        			<section>
+				        <div class="container-fluid">
+				            <h1 class="mt-5 text-center">Bienvenido a tus datos</h1>
+				            <h2 class="mt-3 text-center">Ingrese su código de usuario para interactuar y ver su estado</h2>
+				            <p class="text-center">Si no sabe cuál es su código, ingrese a <a href="/tu-codigo">Tu código</a></p>
+				            <div class="row justify-content-center align-items-center mt-4">
+				                <div class="col-md-6">
+				                    <form action="/servicios/verificar-codigo" method="POST" class="text-center">
+				                        <div class="mb-3">
+				                            <input type="number" class="form-control col-md-5" id="inputCodigoUsuario"
+				                                name="codigoUsuario" placeholder="Ingrese su código de usuario" required>
+				                        </div>
+				                        <button type="submit" class="btn btn-primary">Ingresar</button>
+				                    </form>
+				                    <div th:if="${usuarioValido}" class="mt-5">
+				    				<h2 class="text-center">¡Bienvenido <span th:text="${usuario.nombre}+' '+${usuario.apellido}"></span>!</h2>
+				    				<!--  <a th:href="@{/testimonios/nuevo(codigoUsuario=${usuario.codigo})}" class="btn btn-success">Agregar testimonio</a>-->
+									</div>
+				                </div>
+				            </div>
+				        </div>
+			   	 </section>
+			   	 
+			   	 <section th:if="${usuarioValido}">
+			   	 	<div class="col-md-4">
                         <div class="mt-4">
                             <h2>Calcular IMC</h2>
+                            <form th:action="@{/servicios/guardar}"  method="post">
                             <div class="form-group pb-2">
                                 <label for="weight">Peso Actual (en kg):</label>
-                                <input type="number" class="form-control" id="weight" step="0.1" required>
+                                <input 
+                                 type="number"  class="form-control"  step="0.1"  id="peso" name="peso"   required
+                                 th:name="peso">
+                                 <input type="hidden" name="codigo" id="codigo" th:value="${usuario.codigo}">
                             </div>
-                            <button id="calculateButton" type="button" class="btn btn-primary">Calcular IMC</button>
+                            <button id="calculateButton" type="submit"  class="btn btn-primary">Calcular IMC</button>
+                            </form>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="row">
+                    <div class="row">
                     <div class="col-md-12">
                         <div class="mt-4">
                             <h2>Registros de IMC</h2>
@@ -97,31 +125,23 @@
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
-                                        <th>Peso</th>
-                                        <th>IMC</th>
-                                        <th>Situación</th>
+                                        <th>Estado</th>
                                     </tr>
                                 </thead>
                                 <tbody id="imcTableBody">
-                                    <tr>
-                                        <td>26/06/2023</td>
-                                        <td>80.5</td>
-                                        <td>85</td>
-                                        <td>Sobrepeso</td>
+                                    <tr th:each="dato : ${listaImc}">
+                                        <td th:text="${dato.fecha_imc}"></td>
+                                        <td th:text="${dato.estado}"></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
-                
-                
-
-            </div>
-    
-            
-        </div>
+			   	 </section>
+			</div>
+			</div>
+    	</div>
     </section>
 
 
