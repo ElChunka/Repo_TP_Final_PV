@@ -23,17 +23,15 @@
                 </div>
             </div>
     
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="mt-4">Elige una categoría:</h4>
-                    <select class="form-select" aria-label="Categoría de recetas">
-                        <option selected>Selecciona una categoría</option>
-                        <option value="1">Desayunos</option>
-                        <option value="2">Almuerzos</option>
-                        <option value="3">Cenas</option>
-                    </select>
-                </div>
-            </div>
+            
+            <div class="dropdown">
+			  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+			    Categoria
+			  </a>
+			  <ul class="dropdown-menu">
+			    <li  th:each="categoria : ${categorias}"><a class="dropdown-item" th:href="@{/receta/lista/{categoria}(categoria=${categoria})}" th:text="${categoria}"></a></li>
+			  </ul>
+			</div>
     
             <div class="row mt-4">
                 <div class="col-md-4" th:each="receta : ${recetas}">
