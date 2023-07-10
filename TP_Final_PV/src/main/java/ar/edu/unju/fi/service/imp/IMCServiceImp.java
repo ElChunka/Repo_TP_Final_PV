@@ -31,26 +31,26 @@ public class IMCServiceImp {
         double imc = peso / (usuario.getEstatura() * usuario.getEstatura());
         // Display a message based on the BMI result.
         if (imc < 18.5) {
-        	imc_usuario.setEstado("Su IMC es " + imc + " - Está por debajo de su peso ideal");
+        	imc_usuario.setEstado(/*"Su IMC es " + imc + " -*/ "Está por debajo de su peso ideal");
         } else if (imc >= 18.5 && imc <= 25) {
-        	imc_usuario.setEstado("Su IMC es " + imc + " - Está en su peso normal.");
+        	imc_usuario.setEstado(/*"Su IMC es " + imc + " - */"Está en su peso normal.");
         } else {
-        	imc_usuario.setEstado("Su IMC es " + imc + " - Tiene sobrepeso.");
+        	imc_usuario.setEstado(/*"Su IMC es " + imc + " - */"Tiene sobrepeso.");
         }
         imc_usuario.setFehca_imc(new Date());
         imc_usuario.setUsuario(usuario);
         imcRepository.save(imc_usuario);
     }
 	
-	public List<IndiceMasaCorporal> AllByUsuario() {
+	public List<IndiceMasaCorporal> AllByUsuario(Long usuarioId) {
 
-		return imcRepository.findByUsuario(usuario);
+		return imcRepository.findByUsuarioId(usuarioId);
 	}
 
-	public List<IndiceMasaCorporal> getAllIndices()  {
+	/*public List<IndiceMasaCorporal> getAllIndices()  {
 		List<IndiceMasaCorporal> indiceMasa = new ArrayList<>();
 	    Usuario usuario = this.usuRep.findUltimoDato();
-		indiceMasa = this.imcRepository.findByUsuario(usuario);
+		indiceMasa = this.imcRepository.findByUsuarioId(usuarioId);
 		return indiceMasa;
-	}
+	}*/
 }

@@ -16,7 +16,7 @@ public interface IIMCRepository extends JpaRepository<IndiceMasaCorporal, Long> 
 
 
 
-	public List<IndiceMasaCorporal> findByUsuario(Usuario usuario);
+	List<IndiceMasaCorporal> findByUsuarioId(Long usuarioId);
 	
 	
 }

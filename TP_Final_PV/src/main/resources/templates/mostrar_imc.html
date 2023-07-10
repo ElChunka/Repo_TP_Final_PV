@@ -50,13 +50,13 @@
                     </div>
                 </div>
 
-                <div class="container mt-4">
+                <!-- <div class="container mt-4">
                     <div class="alert alert-info">
                         <p>Para consultar su Índice de Masa Corporal (IMC), por favor inicie sesión o regístrese.</p>
                         <p>Si ya tiene una cuenta, haga clic en <a href="#">Iniciar sesión</a>.</p>
                         <p>Si no tiene una cuenta, haga clic en <a href="#">Registrarse</a> para crear una nueva cuenta.</p>
                     </div>
-                </div>
+                </div> -->
             </div>
     
             
@@ -77,9 +77,32 @@
                             <p><strong>Estatura:</strong> 185</p>
                         </div>
                     </div> -->
-        				
-
-                    <div class="col-md-4">
+        			
+        			<section>
+				        <div class="container-fluid">
+				            <h1 class="mt-5 text-center">Bienvenido a tus datos</h1>
+				            <h2 class="mt-3 text-center">Ingrese su código de usuario para interactuar y ver su estado</h2>
+				            <p class="text-center">Si no sabe cuál es su código, ingrese a <a href="/tu-codigo">Tu código</a></p>
+				            <div class="row justify-content-center align-items-center mt-4">
+				                <div class="col-md-6">
+				                    <form action="/servicios/verificar-codigo" method="POST" class="text-center">
+				                        <div class="mb-3">
+				                            <input type="number" class="form-control col-md-5" id="inputCodigoUsuario"
+				                                name="codigoUsuario" placeholder="Ingrese su código de usuario" required>
+				                        </div>
+				                        <button type="submit" class="btn btn-primary">Ingresar</button>
+				                    </form>
+				                    <div th:if="${usuarioValido}" class="mt-5">
+				    				<h2 class="text-center">¡Bienvenido <span th:text="${usuario.nombre}+' '+${usuario.apellido}"></span>!</h2>
+				    				<!--  <a th:href="@{/testimonios/nuevo(codigoUsuario=${usuario.codigo})}" class="btn btn-success">Agregar testimonio</a>-->
+									</div>
+				                </div>
+				            </div>
+				        </div>
+			   	 </section>
+			   	 
+			   	 <section th:if="${usuarioValido}">
+			   	 	<div class="col-md-4">
                         <div class="mt-4">
                             <h2>Calcular IMC</h2>
                             <form th:action="@{/servicios/guardar}"  method="post">
@@ -93,10 +116,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
-
-
-                 <div class="row">
+                    <div class="row">
                     <div class="col-md-12">
                         <div class="mt-4">
                             <h2>Registros de IMC</h2>
@@ -108,43 +128,19 @@
                                     </tr>
                                 </thead>
                                 <tbody id="imcTableBody">
-                                    <tr th:each="dato : ${indiceMasa}">
-                                        <td th:text="${dato.fecha_imc}">Fecha</td>
+                                    <tr th:each="dato : ${listaImc}">
+                                        <td th:text="${dato.fecha_imc}"></td>
                                         <td th:text="${dato.estado}"></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div> 
-                
-                
-                 <div th:each="testimonio : ${testimonios}" class="card mt-3">
-            <div class="row g-0">
-                <div class="col-md-2 p-2">
-                    <img th:src="@{/img/user-m.png}" class="img-fluid" alt="Imagen del testimonio">
                 </div>
-                <div class="col-md-10">
-                    <div class="card-body">
-                        <p class="card-text mt-3" th:text="${testimonio.comentario}"></p>
-                        <p class="card-text mt-3 fecha-comentario" th:text="${testimonio.fecha}"></p>
-                        <h5 class="card-title">
-                            <span th:text="${testimonio.usuario.codigo} + '@' + ${testimonio.usuario.apellido}"></span>
-                        </h5>
-
-                        <div class="d-none d-flex justify-content-end">
-                            <a href="#" class="btn btn-primary me-2">Editar</a>
-                            <a href="#" class="btn btn-danger">Eliminar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-             
-            </div>
-    
-            
-        </div>
+			   	 </section>
+			</div>
+			</div>
+    	</div>
     </section>
 
 

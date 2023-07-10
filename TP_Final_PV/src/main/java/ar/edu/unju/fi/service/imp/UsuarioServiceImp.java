@@ -14,7 +14,10 @@ import ar.edu.unju.fi.service.IUsuarioService;
 
 @Service
 public class UsuarioServiceImp implements IUsuarioService {
-
+	
+	@Autowired
+	private Usuario usuario;
+	
     @Autowired
     private IUsuarioRepository usuarioRepository;
 
@@ -64,7 +67,7 @@ public class UsuarioServiceImp implements IUsuarioService {
 
 	@Override
 	public Usuario getUsuario() {
-		return null;
+		return usuario;
 	}
 
 
