@@ -14,6 +14,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Component
 @Entity
@@ -24,15 +26,20 @@ public class Receta {
 	@Column(name="rec_id")
 	private Long id;
 	
+	@NotBlank(message="Debe ingresar un nombre para la receta.")
 	@Column(name="rec_nombre")
 	private String nombre;
 	
+	@NotBlank(message="Debe ingresar una categoría.")
 	@Column(name="rec_categoria")
 	private String categoria;
 	
+	@NotBlank(message="Debe ingresar la preparación para la receta.")
+	@Size(min=30, max=5000, message="Debe escribir una preparacion de al menos 30 caracteres.")
 	@Column(name="rec_preparacion")
 	private String preparacion;
 
+	@NotBlank(message="Debe ingresar una imagen.")
 	@Column(name="rec_imagenes")
 	private String imagen;
 	

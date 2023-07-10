@@ -36,9 +36,9 @@
             </div>
     
             <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="card mb-3">
-                    	<div th:each="receta : ${recetas}">
+                <div class="col-md-4" th:each="receta : ${recetas}">
+                    <div class="card mb-3" >
+                    	<div>
                     		<img class="card-img-top" th:src="@{'/recetas/uploads/'}+ ${receta.imagen}" th:alt="${receta.nombre}">
 	                        <div class="card-body">
 	                        	<h5 th:text="${receta.nombre}" class="card-title"></h5>
@@ -51,10 +51,6 @@
             </div>
         </div>
     </section>
-    
-  	<button class="btn btn-primary" onclick="window.location.href='/recetas/nueva-receta'">Agregar Receta</button>
-  	
-  	<button class="btn btn-primary" onclick="window.location.href='/ingredientes/nuevo'">Agregar Ingrediente</button>
     
     <div th:replace="~{/layouts/footer :: footer}"></div>
 

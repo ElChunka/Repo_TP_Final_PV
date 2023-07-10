@@ -32,12 +32,10 @@
                         <img class="card-img-top" th:src="@{'/recetas/uploads/'}+ ${filename}" th:alt="${receta.nombre}">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${receta.nombre}"></h5>
-                            <h6 class="card-subtitle mb-2 text-muted" th:text="${receta.categoria}"></h6>
+                            <h6 class="card-subtitle mb-2 text-muted" th:text="'Receta de ' + ${receta.categoria}"></h6> <br>
                             <h6 class="card-subtitle mb-2 text-muted">Ingredientes:</h6>
                             <ul class="list-group">
-                                <li class="list-group-item">Ingrediente 1</li>
-                                <li class="list-group-item">Ingrediente 2</li>
-                                <li class="list-group-item">Ingrediente 3</li>
+                                <li class="list-group-item" th:each="ingrediente : ${ingredientes}" th:text="${ingrediente.nombre}"></li>
                             </ul>
                             <h6 class="card-subtitle mb-2 mt-4 text-muted">Preparación:</h6>
                             <p class="card-text" th:text="${receta.preparacion}"></p>

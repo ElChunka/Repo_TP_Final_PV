@@ -17,6 +17,9 @@ public class UsuarioServiceImp implements IUsuarioService {
 
     @Autowired
     private IUsuarioRepository usuarioRepository;
+    
+    @Autowired
+    private Usuario usuario;
 
     @Override
     public void guardar(Usuario usuario) {
