@@ -20,9 +20,6 @@ public class UsuarioServiceImp implements IUsuarioService {
 	
     @Autowired
     private IUsuarioRepository usuarioRepository;
-    
-    @Autowired
-    private Usuario usuario;
 
     @Override
     public void guardar(Usuario usuario) {
@@ -76,5 +73,11 @@ public class UsuarioServiceImp implements IUsuarioService {
 	@Override
 	public Usuario getUsuarioFinal() {
 		return usuarioRepository.findUltimoDato();
+	}
+
+	@Override
+	public Usuario getUltimoUsuario() {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 }

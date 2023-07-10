@@ -24,25 +24,24 @@
             <div class="jumbotron text-center mb-5">
                 <h1 class="display-4">Calculadora de Peso Ideal</h1>
                 <p class="lead">Esta página te permite calcular tu peso ideal basado en tu estatura y edad.</p>
-                <hr class="my-4">
                 <p>Ingresa tu código de usuario para obtener tu peso ideal personalizado.</p>
                 
                 <div class="row justify-content-center align-items-center mt-4">
-				      <div class="col-md-6">
+				    <div class="col-md-6">
 				      <form action="/servicios/verificar-codigo-peso" method="POST" class="text-center">
-				      <div class="mb-3">
-				      <input type="number" class="form-control col-md-5" id="inputCodigoUsuario"
-				        name="codigoUsuario" placeholder="Ingrese su código de usuario" required>
-				      </div>
+				      	<div class="mb-3">
+				      		<input type="number" class="form-control col-md-5" id="inputCodigoUsuario"
+				        		name="codigoUsuario" placeholder="Ingrese su código de usuario" required>
+				      	</div>
 				      <button type="submit" class="btn btn-primary">Ingresar</button>
-				      </form>
-				      <div th:if="${usuarioValido}" class="mt-5">
-						<span th:text="'Su Peso Ideal es ' + ${usuario.CalcularPesoIdeal} + 'Kg.'"></span>
+				      	</form>
+				      	<div th:if="${usuarioValido}" class="mt-5">
+							<h3 th:text="'Su Peso Ideal es ' + ${usuario.CalcularPesoIdeal} + 'Kg.'"></h3>
 						</div>
-				 		</div>
+				 	</div>
             	</div>
- 
        		</div>
+       	</div>
     </section>
 
 

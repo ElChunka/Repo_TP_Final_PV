@@ -56,7 +56,7 @@ public class GestionController {
     public String verificarCodigoUsuario(@RequestParam("codigoUsuario") int codigoUsuario, Model model) {
     	 // Buscar el usuario en función del código de usuario proporcionado
     	Usuario usuario = usuarioService.buscarUsuario(codigoUsuario);
-        if (usuario.getCodigo() == 9999 || usuario.getCodigo()==7777) {
+        if (usuario != null && (usuario.getCodigo() == 9999 || usuario.getCodigo()==7777) ) {
         	// Si se encuentra un usuario válido:
             // Establecer los atributos en el modelo
             model.addAttribute("usuarioValido", true);

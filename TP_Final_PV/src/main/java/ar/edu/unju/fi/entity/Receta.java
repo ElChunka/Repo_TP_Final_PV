@@ -41,7 +41,6 @@ public class Receta {
 
 
 	@Column(name="rec_imagenes")
-	@NotBlank(message="Debe ingresar una imagen.")
 	private String imagen;
 	
 	@ManyToMany
