@@ -19,7 +19,7 @@ public class IngredienteServiceImp implements IIngredienteService {
 	IIngredienteRepository ingredienteRepository; 
 	
 	@Override
-	public List<Ingrediente> getIngredientes() {
+	public List<Ingrediente> getIngredientes() { //devuelve etodos los ingredientes
 		return ingredienteRepository.findAll();
 	}
 
@@ -29,7 +29,7 @@ public class IngredienteServiceImp implements IIngredienteService {
 	}
 
 	@Override
-	public void guardar(Ingrediente ingrediente) {
+	public void guardar(Ingrediente ingrediente) {  //guarda ingredientes
 		ingredienteRepository.save(ingrediente);
 	}
 }
