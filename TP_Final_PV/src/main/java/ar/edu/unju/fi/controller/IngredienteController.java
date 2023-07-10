@@ -30,15 +30,15 @@ public class IngredienteController {
 	
 	@GetMapping("/nuevo")
 	public String getIngredientesFormPage(Model model) {
-		model.addAttribute("ingrediente", ingredienteService.getIngrediente());
-		model.addAttribute("ingredientes", ingredienteService.getIngredientes());
+		model.addAttribute("ingrediente", ingredienteService.getIngrediente());  //ingrediente nuevo para ingresar
+		model.addAttribute("ingredientes", ingredienteService.getIngredientes()); //lista de ingredientes ya ingresados
 		return "nuevo_ingrediente";
 	}
 	
 	@PostMapping("/guardar")
 	public ModelAndView getGuardarNuevoIngredientePage(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult result) {
 		ModelAndView modelView = new ModelAndView("recetasql");
-		if(result.hasErrors()) {
+		if(result.hasErrors()) { //error de ingredientes devuelve a la misma pagina
 			modelView.setViewName("nuevo_ingrediente");
 			modelView.addObject("ingrediente", ingrediente);
 			return modelView;
@@ -46,7 +46,7 @@ public class IngredienteController {
 		
 		ingredienteService.guardar(ingrediente);
 		modelView.addObject("recetas", recetaService.getRecetas());
-		modelView.setViewName("redirect:/ingredientes/nuevo");
+		modelView.setViewName("redirect:/ingredientes/nuevo"); //el formulario vuelve en si mismo para poder ingresar mas ingredientes
 		return modelView;
 	}
 }
