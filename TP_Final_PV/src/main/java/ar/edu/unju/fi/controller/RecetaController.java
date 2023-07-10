@@ -55,6 +55,11 @@ public class RecetaController {
 		model.addAttribute("recetas", recetaService.getRecetas());
 		return "recetasql";
 	}
+	@GetMapping("/lista/{categoria}")
+	public String getRecetasCategoriasPage(Model model, @PathVariable(value = "categoria") String categoria) {
+		model.addAttribute("recetas", recetaService.getRecetaCategoria(categoria));
+		return "recetasql";
+	}
 	
 	@GetMapping("/preparacion/{id}")
 	public ModelAndView getRecetapage(@PathVariable("id") Long id) {

@@ -29,7 +29,7 @@
 			    Categoria
 			  </a>
 			  <ul class="dropdown-menu">
-			    <li  th:each="categoria : ${categorias}"><a class="dropdown-item" th:href="@{/receta/lista/{categoria}(categoria=${categoria})}" th:text="${categoria}"></a></li>
+			    <li  th:each="categoria : ${categorias}"><a class="dropdown-item" th:href="@{/recetas/lista/{categoria}(categoria=${categoria})}" th:text="${categoria}"></a></li>
 			  </ul>
 			</div>
     
