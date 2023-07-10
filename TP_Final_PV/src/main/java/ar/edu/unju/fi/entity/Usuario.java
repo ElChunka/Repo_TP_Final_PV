@@ -1,7 +1,7 @@
 package ar.edu.unju.fi.entity;
 
 import java.time.LocalDate;
-
+import java.time.Period;
 import java.util.List;
 
 
@@ -179,4 +179,11 @@ public class Usuario {
     public void setTestimonios(List<Testimonio> testimonios) {
         this.testimonios = testimonios;
     }
+	public double CalcularPesoIdeal() {
+		
+		LocalDate fechaActual = LocalDate.now();
+		Period periodo = Period.between(fechaNacimiento, fechaActual);
+		double edad = (double) periodo.getYears();
+		return (estatura*100) - 100 +((edad/10)*0.9);
+	}
 }

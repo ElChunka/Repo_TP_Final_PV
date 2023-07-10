@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.controller;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,9 +25,11 @@ import ar.edu.unju.fi.service.IUsuarioService;
 import ar.edu.unju.fi.service.imp.IMCServiceImp;
 import jakarta.validation.Valid;
 
+
 @Controller
 @RequestMapping("/servicios")
 public class ServicioController {
+
 
 	@Autowired
     private IUsuarioService usuarioService;
@@ -90,5 +93,16 @@ public class ServicioController {
     @GetMapping("/peso-ideal")
     public String getPesoIdealPage() {
         return "mostrar_peso";
+    }
+    @PostMapping("/verificar-codigo-peso")
+    public String verificarCodigoUsuarioPeso(@RequestParam("codigoUsuario") int codigoUsuario, Model model){
+	    Usuario usuario = usuarioService.buscarUsuario(codigoUsuario);
+	    if(usuario != null) {
+	    	model.addAttribute("usuarioValido", true);
+	    	model.addAttribute("usuario", usuario);
+	    }else {
+	    	model.addAttribute("usuarioValido", false);
+	    }
+	    return "mostrar_peso";
     }
 }

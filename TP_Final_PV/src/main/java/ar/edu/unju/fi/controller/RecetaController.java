@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.controller;
 import java.net.MalformedURLException;
-
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.core.io.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.entity.Ingrediente;
+//import ar.edu.unju.fi.entity.Ingrediente;
 import ar.edu.unju.fi.entity.Receta;
 import ar.edu.unju.fi.service.IIngredienteService;
 import ar.edu.unju.fi.service.IRecetaService;
@@ -44,9 +45,19 @@ public class RecetaController {
 	@Autowired
 	private UploadFile uploadFile;
 	
+	@ModelAttribute("categorias")
+    public List<String> getCategorias() {
+        return Arrays.asList("Carnes", "Bebidas", "Dulces", "Ensaladas", "Legumbres y Cereales", "Pescados", "Pan", "Sopas y Cremas");
+    }
+	
 	@GetMapping("/lista")
 	public String getRecetasPage(Model model) {
 		model.addAttribute("recetas", recetaService.getRecetas());
+		return "recetasql";
+	}
+	@GetMapping("/lista/{categoria}")
+	public String getRecetasCategoriasPage(Model model, @PathVariable(value = "categoria") String categoria) {
+		model.addAttribute("recetas", recetaService.getRecetaCategoria(categoria));
 		return "recetasql";
 	}
 	
@@ -56,13 +67,14 @@ public class RecetaController {
 		receta = recetaService.getBy(id);
 		modelView.addObject("receta", receta);
 		modelView.addObject("filename", receta.getImagen());
+		modelView.addObject("ingredientes", receta.getIngredientes());
 		return modelView;
 	}
 	
 	@GetMapping("/nueva-receta")
 	public String getRecetasFormPage(Model model) {
 		model.addAttribute("receta", recetaService.getReceta());
-		//model.addAttribute("ingredientes", ingredienteService.getIngredientes());
+		model.addAttribute("ingredientes", ingredienteService.getIngredientes());
 		return "nueva_receta";
 	}
 	
@@ -72,6 +84,7 @@ public class RecetaController {
 		
 		ModelAndView modelView = new ModelAndView("recetasql");
 		if(result.hasErrors()) {
+			modelView.setViewName("nueva_receta");
 			modelView.addObject("receta", receta);
 			modelView.addObject("ingredientes", ingredienteService.getIngredientes());
 			return modelView;

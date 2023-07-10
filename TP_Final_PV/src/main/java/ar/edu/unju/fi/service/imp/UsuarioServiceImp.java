@@ -20,6 +20,9 @@ public class UsuarioServiceImp implements IUsuarioService {
 	
     @Autowired
     private IUsuarioRepository usuarioRepository;
+    
+    @Autowired
+    private Usuario usuario;
 
     @Override
     public void guardar(Usuario usuario) {
@@ -38,7 +41,7 @@ public class UsuarioServiceImp implements IUsuarioService {
             if (usuarioExistente == null) {
                 unico = true;
             }
-        } while (!unico);
+        } while (!unico && codigoGenerado != 9999);
 
         usuario.setCodigo(codigoGenerado);
     }
@@ -68,13 +71,6 @@ public class UsuarioServiceImp implements IUsuarioService {
 	@Override
 	public Usuario getUsuario() {
 		return usuario;
-	}
-
-
-	@Override
-	public Usuario getUltimoUsuario() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
