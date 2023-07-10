@@ -56,13 +56,14 @@ public class RecetaController {
 		receta = recetaService.getBy(id);
 		modelView.addObject("receta", receta);
 		modelView.addObject("filename", receta.getImagen());
+		modelView.addObject("ingredientes", receta.getIngredientes());
 		return modelView;
 	}
 	
 	@GetMapping("/nueva-receta")
 	public String getRecetasFormPage(Model model) {
 		model.addAttribute("receta", recetaService.getReceta());
-		//model.addAttribute("ingredientes", ingredienteService.getIngredientes());
+		model.addAttribute("ingredientes", ingredienteService.getIngredientes());
 		return "nueva_receta";
 	}
 	
@@ -72,6 +73,7 @@ public class RecetaController {
 		
 		ModelAndView modelView = new ModelAndView("recetasql");
 		if(result.hasErrors()) {
+			modelView.setViewName("nueva_receta");
 			modelView.addObject("receta", receta);
 			modelView.addObject("ingredientes", ingredienteService.getIngredientes());
 			return modelView;

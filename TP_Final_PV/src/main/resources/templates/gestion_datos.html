@@ -37,6 +37,8 @@
                     <div th:if="${usuarioValido}" class="mt-5">
     				<h2 class="text-center">¡Bienvenido <span th:text="${usuario.nombre}+' '+${usuario.apellido}"></span>!</h2>
     				<a th:href="@{/testimonios/nuevo(codigoUsuario=${usuario.codigo})}" class="btn btn-success">Agregar testimonio</a>
+    				<a th:href="@{/recetas/nueva-receta}" class="btn btn-success">Agregar Receta</a>
+  					<a th:href="@{/ingredientes/nuevo}" class="btn btn-success">Agregar Ingrediente</a>
 					</div>
                 </div>
             </div>
