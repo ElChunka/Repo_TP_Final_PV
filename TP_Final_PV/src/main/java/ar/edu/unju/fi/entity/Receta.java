@@ -26,21 +26,21 @@ public class Receta {
 	@Column(name="rec_id")
 	private Long id;
 	
-	@NotBlank(message="Debe ingresar un nombre para la receta.")
 	@Column(name="rec_nombre")
+	@NotBlank(message="Debe ingresar un nombre para la receta.")
 	private String nombre;
 	
-	@NotBlank(message="Debe ingresar una categoría.")
 	@Column(name="rec_categoria")
+	@NotBlank(message="Debe ingresar una categoría.")
 	private String categoria;
 	
+	@Column(name="rec_preparacion")
 	@NotBlank(message="Debe ingresar la preparación para la receta.")
 	@Size(min=30, max=5000, message="Debe escribir una preparacion de al menos 30 caracteres.")
-	@Column(name="rec_preparacion")
 	private String preparacion;
 
-	@NotBlank(message="Debe ingresar una imagen.")
 	@Column(name="rec_imagenes")
+	@NotBlank(message="Debe ingresar una imagen.")
 	private String imagen;
 	
 	@ManyToMany
